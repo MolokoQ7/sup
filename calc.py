@@ -13,10 +13,8 @@ def calculator(num1, num2, op):
     else:
         return "Невідома операція"
 
-# Введення чисел і операції з клавіатури
 a = float(input("Введіть перше число: "))
 b = float(input("Введіть друге число: "))
 operation = input("Введіть операцію (+, -, *, /): ")
 
-# Виведення результату
 print(calculator(a, b, operation))
