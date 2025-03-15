@@ -12,9 +12,7 @@ def calculator(num1, num2, op):
             return "Помилка: ділення на нуль!"
     else:
         return "Невідома операція"
-
 a = float(input("Введіть перше число: "))
 b = float(input("Введіть друге число: "))
 operation = input("Введіть операцію (+, -, *, /): ")
-
 print(calculator(a, b, operation))
