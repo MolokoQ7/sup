@@ -14,3 +14,18 @@ obj.area()
 obj.p()
 print(obj.area())
 print(obj.p())
+
+class Student:
+    def __init__(s, n, m=0): s.n, s.g, s.gr = n, [], m
+    def A(s, g): s.g.append(g)
+    def G(s): return sum(s.g) / len(s.g) if s.g else 0
+    def add_gr(s, m): s.gr += m
+    def take_gr(s, m): s.gr -= m
+
+s = Student("Росомаха")
+s.A(10)
+s.A(8)
+s.A(9)
+s.add_gr(100)
+s.take_gr(50)
+print(s.n, s.G(), s.gr)
