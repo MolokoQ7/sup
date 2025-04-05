@@ -135,36 +135,55 @@ class Pet(ABC):
         pass
 
     def info(self):
-        return f"{self.name}, {self.age} років"
+        return f"Ім'я: {self.name}, Вік: {self.age}"
 
 class Dog(Pet):
     def make_sound(self):
-        print("Гав")
+        print("Гав-гав!")
+
+    def info(self):
+        return super().info() + " | Тип: Пес"
 
 class Cat(Pet):
     def make_sound(self):
-        print("Няв-няв")
+        print("Няв-няв!")
+
+    def info(self):
+        return super().info() + " | Тип: Кіт"
 
 class Product(ABC):
-    def __init__(self, name, price):
+    def __init__(self, name, base_price):
+        if base_price <= 0:
+            raise ValueError("Ціна повинна бути > 0")
         self.name = name
-        self.price = price
+        self.base_price = base_price
 
     @abstractmethod
-    def get_price(self):
-        return self.price
+    def get_final_price(self):
+        pass
 
-class Electronics(Product):
-    def get_price(self):
-        return self.price * 0.01
-class Clothing(Product):
-    def get_price(self):
-        return self.price - 150
-pets = [Dog("Гавноед3000", 3), Cat("Топ-Кіт", 2)]
+class BookProduct(Product):
+    def get_final_price(self):
+        return self.base_price * 0.9
+
+class ElectronicProduct(Product):
+    def get_final_price(self):
+        if self.base_price < 500:
+            return self.base_price
+        return self.base_price * 0.95
+
+pets = [Dog("Шарик", 3), Cat("Мурчик", 2)]
 for pet in pets:
     print(pet.info())
     pet.make_sound()
 
-products = [Electronics("Ноутбук", 30000), Clothing("Футболка", 800)]
-for product in products:
-    print(f"{product.name}: {product.get_price()} грн")
+try:
+    products = [
+        BookProduct("Книга", 300),
+        ElectronicProduct("Телевізор", 600),
+        ElectronicProduct("Телефон", 400)
+    ]
+    for product in products:
+        print(f"{product.name}: {product.get_final_price()} грн")
+except ValueError as e:
+    print(e)
