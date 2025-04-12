@@ -1,3 +1,5 @@
+
+#типа че как мабой 1 завдання
 class Car:
     def __init__(self, brand, model, year, mileage):
         self.brand = brand
@@ -41,6 +43,7 @@ garage.show_all()
 garage.show_old_cars()
 
 
+# ну тіпа йоу мабой 2 завдання
 
 
 from abc import ABC, abstractmethod
@@ -107,3 +110,60 @@ class Library:
         for item in self.items:
             if word.lower() in item.title.lower():
                 print(item.info())
+
+
+#ну тіпа йоу 3 завдання
+
+
+class Item:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+    def get_info(self):
+        return self.name, self.price
+
+class FoodItem(Item):
+    def __init__(self, name, price, expiration_date):
+        super().__init__(name, price)
+        self.expiration_date = expiration_date
+
+    def get_info(self):
+        return self.name, self.price, self.expiration_date
+
+class TechItem(Item):
+    def __init__(self, name, price, warranty_years):
+        super().__init__(name, price)
+        self.warranty_years = warranty_years
+
+    def get_info(self):
+        return self.name, self.price, self.warranty_years
+
+class ShoppingCart:
+    def __init__(self):
+        self.items = []
+
+    def add_item(self, item):
+        self.items.append(item)
+
+    def show_cart(self):
+        for item in self.items:
+            print(item.get_info())
+
+    def total_price(self):
+        total = 0
+        for item in self.items:
+            total += item.price
+        return total
+
+class Shopper:
+    def __init__(self, name):
+        self.name = name
+        self.cart = ShoppingCart()
+
+    def add_to_cart(self, item):
+        self.cart.add_item(item)
+
+    def checkout(self):
+        self.cart.show_cart()
+        print(f"Загальна сума: {self.cart.total_price()} грн")
