@@ -1,46 +1,50 @@
 
 #типа че как мабой 1 завдання
-class Car:
-    def __init__(self, brand, model, year, mileage):
-        self.brand = brand
-        self.model = model
-        self.year = year
-        self.mileage = mileage
+class C:
+    def __init__(self, br, md, yr, ml):
+        self.br = br
+        self.md = md
+        self.yr = yr
+        self.ml = ml
 
     def info(self):
-        return self.brand, self.model, self.year, self.mileage
+        return self.br, self.md, self.yr, self.ml
 
-    def drive(self, distance):
-        self.mileage += distance
+    def drive(self, dist):
+        self.ml += dist
 
     def is_old(self):
-        return self.year < 2010
+        return self.yr < 2010
 
-class Garage:
+class G:
     def __init__(self):
         self.cars = []
 
-    def add_car(self, car):
+    def add(self, car):
         self.cars.append(car)
-    def drive_all(self, distance):
+
+    def drive_all(self, dist):
         for car in self.cars:
-            car.drive(distance)
+            car.drive(dist)
+
     def show_all(self):
         for car in self.cars:
             print(car.info())
-    def show_old_cars(self):
+
+    def show_old(self):
         for car in self.cars:
             if car.is_old():
                 print(car.info())
 
-car1 = Car("BMW", "X5", 2005, 200000)
-car2 = Car("Tesla", "Model 3", 2020, 30000)
-garage = Garage()
-garage.add_car(car1)
-garage.add_car(car2)
-garage.drive_all(100)
-garage.show_all()
-garage.show_old_cars()
+car1 = C("Audi", "A4", 2005, 200000)
+car2 = C("Ford", "Mustang", 2020, 30000)
+g = G()
+g.add(car1)
+g.add(car2)
+g.drive_all(100)
+g.show_all()
+g.show_old()
+
 
 
 # ну тіпа йоу мабой 2 завдання
