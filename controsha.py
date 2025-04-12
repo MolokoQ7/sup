@@ -167,3 +167,9 @@ class Shopper:
     def checkout(self):
         self.cart.show_cart()
         print(f"Загальна сума: {self.cart.total_price()} грн")
+apple = FoodItem("Яблуко", 25, "2025-06-30")
+laptop = TechItem("Ноутбук", 18000, 3)
+vasya = Shopper("Вася")
+vasya.add_to_cart(apple)
+vasya.add_to_cart(laptop)
+vasya.checkout()
